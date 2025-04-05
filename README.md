@@ -25,8 +25,7 @@ Mental health is as important as physical well-being. Forest Haven is created to
 1. User inputs a message.
 2. Message processed using emotion detection model.
 3. Bot generates a response based on detected emotion.
-4. Frontend displays the calming and supportive reply.
-(./visual%20selection.png)
+4. Frontend displays the calming and supportive reply (./_-%20visual%20selection.png)
 
 ## 🛠️ How to Run This Locally
 
