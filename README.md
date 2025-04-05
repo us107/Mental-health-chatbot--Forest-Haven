@@ -14,7 +14,7 @@ Mental health is as important as physical well-being. Forest Haven is created to
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Python (Flask)
-- **NLP & ML**: Hugging Face Transformers, Pytorch
+- **NLP & ML**: Hugging Face Transformers (model="bhadresh-savani/distilbert-base-uncased-emotion"), Pytorch
 - **Emotion Detection**: Pretrained transformer models
 - **Environment**: Python 3.8+
 
