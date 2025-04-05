@@ -10,6 +10,9 @@
 - Tailored replies to help users navigate stress, anxiety, and mood swings  
 - Designed to support mental well-being in a non-judgmental, private environment  
 - Great for students, professionals, or anyone needing a safe digital space to talk
+- Offers helpful video links and supportive suggestions based on emotional needs
+- Responds with empathy while also sharing insightful mental health facts — for example, India accounts for nearly 15% of global mental health conditions like depression and anxiety
+- Combines AI understanding with kindness to create a virtual space that listens and comforts
 
 ---
 
