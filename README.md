@@ -6,7 +6,10 @@
 
 ## 🧠 About the Project
 
-Mental health is as important as physical well-being. Forest Haven is created to provide a safe, supportive space for users who need someone to talk to. Whether you're stressed, anxious, or just need a comforting conversation, Forest Haven is here for you 24/7.
+- A real-time chatbot that detects emotional context in user inputs  
+- Tailored replies to help users navigate stress, anxiety, and mood swings  
+- Designed to support mental well-being in a non-judgmental, private environment  
+- Great for students, professionals, or anyone needing a safe digital space to talk
 
 ---
 
@@ -23,6 +26,8 @@ Mental health is as important as physical well-being. Forest Haven is created to
 - **NLP & ML**: Hugging Face Transformers (model="bhadresh-savani/distilbert-base-uncased-emotion"), Pytorch
 - **Emotion Detection**: Pretrained transformer models
 - **Environment**: Python 3.8+
+- **Data Analysis**: PySpark  
+- **Deployment**: GitHub Pages / Streamlit / Flask server  
 
 ---
 
@@ -44,6 +49,21 @@ Watch the chatbot in action!
 
 ---
 
+## 📊 Data Preprocessing with PySpark
+
+Before the chatbot generates emotionally intelligent responses, a PySpark-based script is used to analyze the dataset and extract mental health insights based on:
+
+- **Stress Levels** (`Growing_Stress = Yes`)  
+- **Mood Swings** (`Mood_Swings = High or Medium`)  
+- **Country-wise Statistics**
+
+This script:
+- Aggregates total entries per country
+- Calculate percentages of users experiencing stress/mood swings
+- Saves results to `mental_health_stats.csv` for chatbot usage
+
+----
+
 ## 🛠️ How to Run This Locally
 
 1. Clone the repo:
@@ -59,7 +79,12 @@ Watch the chatbot in action!
     ```bash
      pip install -r requirements.txt
 
-4. Run the app
+4. Run the spark script
+    ```bash
+    pip install pyspark
+    python spark.py 
+
+6. Run the app
    ```bash
       python chatbot.py
 
