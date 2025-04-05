@@ -35,6 +35,14 @@ Mental health is as important as physical well-being. Forest Haven is created to
 
 ![Forest Haven Chatbot Preview](https://github.com/us107/Mental-health-chatbot--Forest-Haven/blob/main/image.png?raw=true)
 
+---
+
+## 🎥 Demo
+
+Watch the chatbot in action!  
+[▶️ Click to view demo video](https://github.com/us107/Mental-health-chatbot--Forest-Haven/blob/main/demo%20-%20Made%20with%20Clipchamp.mp4?raw=true)
+
+---
 
 ## 🛠️ How to Run This Locally
 
