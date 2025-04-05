@@ -10,6 +10,12 @@ Mental health is as important as physical well-being. Forest Haven is created to
 
 ---
 
+## Dataset
+
+ - https://www.kaggle.com/datasets/bhavikjikadara/mental-health-dataset
+
+---
+
 ## 🔧 Tech Stack
 
 - **Frontend**: HTML, CSS, JavaScript
