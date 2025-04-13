@@ -1,4 +1,4 @@
-###🌲 Forest Therapy: A Mental Health Chatbot
+# Forest Therapy: A Mental Health Chatbot
 
 Forest Therapy is an intelligent mental wellness chatbot built using PyTorch, Flask, and MongoDB. Designed to provide emotional support and mood tracking, this forest-themed chatbot — affectionately named **Zara** — engages in conversations, tracks user mood, and performs basic sentiment analysis.
 
