@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Therapy - Manipal Mental Health Center</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3209/3209018.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Chart.js for mood visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo"><b>Manipal Mental Health Center</b> <i class="fas fa-leaf"></i></div>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#services"><i class="fas fa-comments"></i> Chatbot Services</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="new1">
+        <h1>Welcome to <span class="role"></span></h1>
+        <br>
+        <p>Our forest-themed AI assistant offers a calming space for mental wellness guidance, instant answers to your questions, and personalized support for a peaceful mind.</p>
+    </section>
+
+    <!-- Chatbot Services Section -->
+    <section id="services" class="new2">
+        <h2>Our Forest Therapy Services</h2>
+        <div class="services-list">
+            <div class="service-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712107.png" alt="24/7 Support">
+                <p>24/7 Mental Health Support in a Calming Forest Environment</p>
+            </div>
+            <div class="service-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="FAQs">
+                <p>Instant Guidance with Nature-Inspired Conversations</p>
+            </div>
+            <div class="service-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/4105/4105443.png" alt="Resource Assistance">
+                <p>Connect with Natural Resources for Healing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="new3">
+        <h2>Contact Our Forest Retreat</h2>
+        <p><i class="fas fa-map-marker-alt"></i> Forest Therapy Center, Manipal University Jaipur, Rajasthan</p>
+        <p><i class="fas fa-envelope"></i> greentherapy@manipalmentalhealth.org</p>
+        <p><i class="fas fa-phone"></i> +91 99999 88888</p>
+    </section>
+
+    <!-- Falling Leaves Container -->
+    <div id="leaves-container"></div>
+
+    <!-- Chatbot Container -->
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header">
+                        <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">Forest Therapy Bot</h4>
+                        <p class="chatbox__description--header">Hi, I'm Zara. How can I assist your wellness journey today?</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div></div>
+                </div>
+                <div class="chatbox__footer">
+                    <input type="text" placeholder="Write a message...">
+                    <button class="chatbox__send--footer send__button"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <!-- Mood Prompt -->
+                <div id="mood-prompt" style="display:none;">
+                    <p>Rate your mood (1 = worst, 10 = very good):</p>
+                    <input type="number" id="mood-input" min="1" max="10" style="width: 50px;">
+                    <button>Submit</button>
+                </div>
+            </div>
+            <div class="chatbox__button">
+                <button><img src="{{ url_for('static', filename='chatbox-icon.svg') }}" alt="Chatbox Icon" /></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Section -->
+    <section id="analysis" class="new4">
+        <h2>Your Mood Journey</h2>
+        <button onclick="getAnalysis()">View Mood Analysis</button>
+        <canvas id="moodChart" style="max-width: 600px; margin: 20px auto;"></canvas>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <script>
+        // Typed.js for animated text
+        var typeData = new Typed(".role", {
+            strings: [
+                "Forest Therapy Center",
+                "Your Natural Wellness Space",
+                "A Calming Digital Environment"
+            ],
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 80,
+            backDelay: 1000
+        });
+
+        // Falling leaves
+        function createLeaves() {
+            const leafImages = [
+                'https://www.freepnglogos.com/uploads/leaf-png/leaf-maple-leaf-transparent-png-pictures-icons-and-png-11.png',
+                'https://www.freepnglogos.com/uploads/leaf-png/leaf-green-png-transparent-images-download-clip-8.png',
+                'https://cdn.pixabay.com/photo/2017/01/30/15/23/leaf-2021645_960_720.png'
+            ];
+            const leavesContainer = document.getElementById('leaves-container');
+            const LEAF_COUNT = 15;
+            for (let i = 0; i < LEAF_COUNT; i++) {
+                let leaf = document.createElement('div');
+                leaf.className = 'leaf';
+                leaf.style.backgroundImage = `url(${leafImages[Math.floor(Math.random() * leafImages.length)]})`;
+                leaf.style.left = `${Math.random() * 100}vw`;
+                leaf.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                leaf.style.animationDelay = `${Math.random() * 5}s`;
+                leaf.style.animation = `fall ${leaf.style.animationDuration} linear ${leaf.style.animationDelay} infinite`;
+                leavesContainer.appendChild(leaf);
+            }
+        }
+        window.onload = function() {
+            createLeaves();
+        };
+
+        // Chart rendering for mood analysis with debug
+        async function getAnalysis() {
+            try {
+                const response = await fetch("/analysis");
+                const data = await response.json();
+                console.log('Fetched analysis data:', data); // Debug log
+                if (data.length === 0) {
+                    alert('No mood analysis data available. Please submit mood ratings after 5 messages.');
+                    return;
+                }
+                renderMoodChart(data);
+            } catch (error) {
+                console.error('Error fetching analysis:', error);
+                alert('Error fetching analysis. Check console for details.');
+            }
+        }
+
+        function renderMoodChart(data) {
+            const ctx = document.getElementById("moodChart").getContext("2d");
+            // Destroy existing chart if it exists to avoid overlap
+            if (window.myChart) {
+                window.myChart.destroy();
+            }
+            window.myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: data.map(d => new Date(d.timestamp).toLocaleDateString()),
+                    datasets: [
+                        {
+                            label: "Average Mood",
+                            data: data.map(d => d.avg_mood || 0),
+                            borderColor: "#4CAF50",
+                            fill: false
+                        },
+                        {
+                            label: "Sentiment Mood",
+                            data: data.map(d => d.sentiment_mood || 0),
+                            borderColor: "#2196F3",
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { min: 1, max: 10, title: { display: true, text: "Mood (1-10)" } }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
