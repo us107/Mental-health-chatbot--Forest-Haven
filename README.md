@@ -92,7 +92,7 @@ The complete lifecycle of the Forest Therapy chatbot consists of the following s
 ## 🎥 Demo
 
 Watch the chatbot in action!  
-[▶️ Click to view demo video](https://github.com/us107/Mental-health-chatbot--Forest-Haven/blob/main/demo%20-%20Made%20with%20Clipchamp.mp4?raw=true)
+[▶️ Click to view demo video]([https://github.com/us107/Mental-health-chatbot--Forest-Haven/blob/630992ea1c01be5f24b5f258127ba8b1de42d994/demo.mp4])
 
 ---
 
