@@ -18,28 +18,73 @@
 
 ## Dataset
 
- - https://www.kaggle.com/datasets/bhavikjikadara/mental-health-dataset
+ - Refer the intents.json file.
 
 ---
 
 ## 🔧 Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Python (Flask)
-- **NLP & ML**: Hugging Face Transformers (model="bhadresh-savani/distilbert-base-uncased-emotion"), Pytorch
-- **Emotion Detection**: Pretrained transformer models
-- **Environment**: Python 3.8+
-- **Data Analysis**: PySpark  
-- **Deployment**: GitHub Pages / Streamlit / Flask server  
+### 💻 Backend
+- **Python 3**
+- **Flask** – Web framework for serving chatbot and handling API routes
+- **Flask-Session** – User session management
 
+### 🤖 Machine Learning
+- **PyTorch** – Neural network model training and inference
+- **NLTK** – Tokenization and stemming
+- **TextBlob** – Sentiment analysis
+
+### 🗃️ Database
+- **MongoDB** – Stores conversation history, mood entries, and sentiment analysis
+
+### 🌐 Frontend
+- **HTML (Jinja2 template)** – Simple UI with `base.html`
+
+### 📦 Other Tools
+- **TorchScript** – Saves trained model (`data.pth`)
+- **JSON** – Used for defining intents and patterns (`intents.json`)
 ---
 
 ## 🚀 Workflow
+The complete lifecycle of the Forest Therapy chatbot consists of the following stages:
 
-1. User inputs a message.  
-2. Message processed using emotion detection model.  
-3. Bot generates a response based on detected emotion.  
-4. Frontend displays the calming and supportive reply.
+### 🏗️ 1. Data Preparation
+- Define conversation intents in `intents.json`
+- Each intent contains:
+  - `tag`: intent label
+  - `patterns`: sample user messages
+  - `responses`: possible bot replies
+
+### 🧠 2. Model Training (`train.py`)
+- Tokenize and stem all patterns using NLTK
+- Convert text to bag-of-words vectors
+- Train a neural network using PyTorch
+- Save model as `data.pth` for later inference
+
+### 🧪 3. Chatbot Inference (`chat.py`)
+- Load the trained model and `intents.json`
+- For each user message:
+  - Tokenize and convert to bag-of-words
+  - Predict intent and choose a random response
+  - If confidence < 0.75, return fallback message
+
+### 🌐 4. Web Integration (`app.py`)
+- Set up Flask server with session-based user ID
+- Routes:
+  - `/predict`: Accepts user message and returns bot response
+  - `/mood`: Accepts user mood (1–10) and stores it
+  - `/analysis`: Returns mood and sentiment trends
+- Stores all data in MongoDB (`conversations`, `mood_scores`, `analysis`)
+
+### 📊 5. Mood & Sentiment Analysis
+- Every 5th query, calculate:
+  - Average mood from user submissions
+  - Sentiment score using TextBlob polarity
+- Store the computed metrics in MongoDB
+
+### 🧾 6. Frontend (HTML Template)
+- Renders basic UI for chatting with the bot
+- Displays real-time responses and mood input option
 
 ![Forest Haven Chatbot Preview](https://github.com/us107/Mental-health-chatbot--Forest-Haven/blob/main/image.png?raw=true)
 
@@ -51,21 +96,6 @@ Watch the chatbot in action!
 [▶️ Click to view demo video](https://github.com/us107/Mental-health-chatbot--Forest-Haven/blob/main/demo%20-%20Made%20with%20Clipchamp.mp4?raw=true)
 
 ---
-
-## 📊 Data Preprocessing with PySpark
-
-Before the chatbot generates emotionally intelligent responses, a PySpark-based script is used to analyze the dataset and extract mental health insights based on:
-
-- **Stress Levels** (`Growing_Stress = Yes`)  
-- **Mood Swings** (`Mood_Swings = High or Medium`)  
-- **Country-wise Statistics**
-
-This script:
-- Aggregates total entries per country
-- Calculate percentages of users experiencing stress/mood swings
-- Saves results to `mental_health_stats.csv` for chatbot usage
-
-----
 
 ## 🛠️ How to Run This Locally
 
@@ -82,14 +112,14 @@ This script:
     ```bash
      pip install -r requirements.txt
 
-4. Run the spark script
+4. Run train.py and then chat.py
     ```bash
-    pip install pyspark
-    python spark.py 
+    python train.py
+    python chat.py 
 
-6. Run the app
+6. Run the Flask app
    ```bash
-      python chatbot.py
+      python app.py
 
 ## Contributing 
    Contributions are welcome! Feel free to open issues or pull requests. Let's grow Forest Haven together and support more minds! 💚
