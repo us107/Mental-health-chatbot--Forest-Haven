@@ -1,19 +1,18 @@
-# 🌲 Forest Haven - Mental Health Chatbot
+🌲 Forest Therapy: A Mental Health Chatbot
 
-**Forest Haven** is a real-time, web-based mental wellness chatbot that offers emotional support through natural conversations. Built with NLP, emotion detection, and Hugging Face Transformers, it understands your feelings and responds in a comforting, therapist-like way — just like a peaceful forest for your thoughts. 🌿
+Forest Therapy is an intelligent mental wellness chatbot built using PyTorch, Flask, and MongoDB. Designed to provide emotional support and mood tracking, this forest-themed chatbot — affectionately named **Zara** — engages in conversations, tracks user mood, and performs basic sentiment analysis.
 
 ---
 
-## 🧠 About the Project
+## 🧠 Features
 
-- A real-time chatbot that detects emotional context in user inputs  
-- Tailored replies to help users navigate stress, anxiety, and mood swings  
-- Designed to support mental well-being in a non-judgmental, private environment  
-- Great for students, professionals, or anyone needing a safe digital space to talk
-- Offers helpful video links and supportive suggestions based on emotional needs
-- Responds with empathy while also sharing insightful mental health facts — for example, India accounts for nearly 15% of global mental health conditions like depression and anxiety
-- Combines AI understanding with kindness to create a virtual space that listens and comforts
-
+- 🤖 AI-powered chatbot using a trained neural network  
+- 🗨️ Natural language understanding via NLTK and PyTorch  
+- 📊 Mood tracking and sentiment analysis  
+- 💬 Personalized conversation history  
+- 📁 MongoDB integration for persistent storage  
+- 🌐 Web interface powered by Flask  
+- 🧩 Session-based tracking for individual users  
 ---
 
 ## Dataset
